@@ -10,9 +10,11 @@ cd SillyGirlDockerDeploy
 ```sh
 docker-compose up  --build
 ```
-4、QQ机器人扫码-配置
+4、
+QQ机器人扫码-配置
 
-5、ctrl+c
+5、
+ctrl+c
 
 6、
 ```sh
