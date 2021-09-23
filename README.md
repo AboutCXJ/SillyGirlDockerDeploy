@@ -1,22 +1,24 @@
-1、
+使用方法
+----------
+1、  
 ```sh
 git clone  https://github.com/AboutCXJ/SillyGirlDockerDeploy
 ```
-2、
+2、  
 ```sh
 cd SillyGirlDockerDeploy
 ```
-3、
+3、  
 ```sh
 docker-compose up  --build
 ```
-4、
+4、  
 QQ机器人扫码-配置
 
-5、
+5、  
 ctrl+c
 
-6、
+6、  
 ```sh
 docker-compose up  -d  --build
 ```
