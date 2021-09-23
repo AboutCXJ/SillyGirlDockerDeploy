@@ -1,0 +1,15 @@
+version: "3"
+services:
+  sillygirl:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sillygirl
+    hostname: sillygirl
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    ports:
+      - "80:8080"
+    volumes:
+      - ./sillyGirl:/sillyGirl

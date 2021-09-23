@@ -1,0 +1,73 @@
+#!/bin/bash
+
+if [ -z $CODE_DIR ]; then
+  CODE_DIR=/sillyGirl
+fi
+
+if [ -z $REPO_URL ]; then
+  REPO_URL=https://github.com/cdle/sillyGirl.git
+fi
+
+
+if [ -z $EXTEND_REPO_URL ]; then
+  EXTEND_REPO_URL=https://github.com/ufuckee/jd_cookie.git
+fi
+
+
+if ! type git  >/dev/null 2>&1; then
+  echo "正在安装git..."
+  apk add git
+else 
+  echo "git已安装"
+fi
+
+
+if [ ! -d $CODE_DIR/.git ]; then
+  echo "sillyGirl 核心代码目录为空, 开始clone代码..."
+  git clone $REPO_URL  $CODE_DIR
+else 
+  echo "sillyGirl 核心代码已存在"
+  echo "更新 sillyGirl 核心代码"
+  cd $CODE_DIR && git reset --hard && git pull
+fi
+
+
+TMP_EXTEND_REPO_NAME=${EXTEND_REPO_URL##*/}
+EXTEND_REPO_NAME=${TMP_EXTEND_REPO_NAME%.*}
+
+
+if [ ! -d $CODE_DIR/develop/${EXTEND_REPO_NAME}/.git ]; then
+    echo "扩展 ${EXTEND_REPO_NAME} 代码目录为空, 开始clone代码..."
+    git clone $EXTEND_REPO_URL  $CODE_DIR/develop/${EXTEND_REPO_NAME}
+else
+  echo "扩展 ${EXTEND_REPO_NAME} 代码已存在"
+  echo "更新扩展 ${EXTEND_REPO_NAME} 代码"
+  cd $CODE_DIR/develop/${EXTEND_REPO_NAME} && git reset --hard && git pull
+fi
+
+
+if [ ! -f $CODE_DIR/dev.go ]; then
+    echo "dev.go 不存在  添加 dev.go"
+    cat > $CODE_DIR/dev.go <<EOF
+package main
+
+import (
+    _ "github.com/cdle/sillyGirl/develop/qinglong"
+    _ "github.com/cdle/sillyGirl/develop/jd_cookie"
+    _ "github.com/cdle/sillyGirl/im/qq"
+    _ "github.com/cdle/sillyGirl/im/wxmp"
+    _ "github.com/cdle/sillyGirl/im/tg"
+)
+EOF
+
+else
+  echo "dev.go 已存在  不添加 dev.go"
+fi
+
+
+echo "开始编译..."
+cd $CODE_DIR && go build
+
+
+echo "启动..."
+ ./sillyGirl
