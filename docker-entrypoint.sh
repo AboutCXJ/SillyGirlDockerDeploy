@@ -1,16 +1,38 @@
-#!/bin/bash
+#!/bin/sh
 
 if [ -z $CODE_DIR ]; then
   CODE_DIR=/sillyGirl
 fi
 
+if [  "$ENABLE_GOPROXY" = "true" ]; then
+  export GOPROXY=https://goproxy.io,direct 
+  echo "启用 goproxy 加速 ${GOPROXY}"
+else
+  echo "未启用 goproxy 加速"
+fi
+
+if [ "$ENABLE_GITHUBPROXY" = "true" ]; then
+   GITHUBPROXY=https://ghproxy.com/
+   echo "启用 github 加速 ${GITHUBPROXY}"
+else
+  echo "未启用 github 加速"
+fi
+
+if [ "$ENABLE_APKPROXY" = "true" ]; then
+  sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+  echo "启用 alpine APK 加速 mirrors.aliyun.com"
+else
+  sed -i 's/mirrors.aliyun.com/dl-cdn.alpinelinux.org/g' /etc/apk/repositories
+  echo "未启用 alpine APK 加速"
+fi
+
 if [ -z $REPO_URL ]; then
-  REPO_URL=https://github.com/cdle/sillyGirl.git
+  REPO_URL=${GITHUBPROXY}https://github.com/cdle/sillyGirl.git
 fi
 
 
 if [ -z $EXTEND_REPO_URL ]; then
-  EXTEND_REPO_URL=https://github.com/ufuckee/jd_cookie.git
+  EXTEND_REPO_URL=${GITHUBPROXY}https://github.com/ufuckee/jd_cookie.git
 fi
 
 
@@ -71,3 +93,5 @@ cd $CODE_DIR && go build
 
 echo "启动..."
  ./sillyGirl
+
+
