@@ -12,7 +12,8 @@ services:
     ports:
       - "80:8080"
     volumes:
-      - ./sillyGirl:/sillyGirl
+      - ./code:/sillyGirl
+      - ./conf:/etc/sillyGirl
     environment:
       # 国内网络建议开启，国外网络开启可能变慢
       - ENABLE_GOPROXY=true  #go 加速代理
