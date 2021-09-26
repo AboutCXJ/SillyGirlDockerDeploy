@@ -31,28 +31,22 @@
 
 **前提条件：Git、Docker、 Docker-compose**
 
-*配置了 Golang、 github、 apline apk 加速*
-
-*国内机器建议打开，国外机器建议关闭*
-
-*docker-compose.yaml 中设置*
+*配置了 Golang、 github、 apline apk 加速国内机器建议打开，国外机器建议关闭 在docker-compose.yaml 中设置*
 
 1. 克隆仓库 ：git clone  https://github.com/AboutCXJ/SillyGirlDockerDeploy
-2. 进入 SillyGirlDockerDeploy 目录：cd SillyGirlDockerDeploy
-3. 前台运行：docker-compose up --build
-4. QQ机器人扫码-配置（详见下方使用教程）
-5. ctrl+c
-6. 后台运行：docker-compose up --build -d
+2. 参考 SillyGirlDockerDeploy/conf/example_sets.conf 设置   SillyGirlDockerDeploy/conf/sets.conf
+3. 在 SillyGirlDockerDeploy目录 运行：docker-compose up --build 看看是否正确运行
+4. ctrl+c
+5. 后台运行：docker-compose up --build -d
 
 ### 方法二：本机部署
 
 **前提条件：Git、Golang**
 
 1. 克隆主仓库： git clone https://github.com/cdle/sillyGirl
-
-2. 在 sillyGirl/develop 目录下运行：cd sillyGirl/develop
-
-3. 在 sillyGirl 目录下新建文件 dev.go 内容如下
+2. 在 sillyGirl/develop 目录下运行：git clone https://github.com/ufuckee/jd_cookie
+3. 参考 [example_sets.conf](./conf/example_sets.conf) 设置 /etc/sillyGirl/sets.conf
+4. 在 sillyGirl 目录下新建文件 dev.go 内容如下
 
   ```go
  package main
