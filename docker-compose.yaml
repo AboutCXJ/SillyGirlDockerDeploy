@@ -16,6 +16,7 @@ services:
       - ./conf:/etc/sillyGirl
     environment:
       # 国内网络建议开启，国外网络开启可能变慢
-      - ENABLE_GOPROXY=true  #go 加速代理
-      - ENABLE_GITHUBPROXY=true #github 加速代理
-      - ENABLE_APKPROXY=true #alpin APK 加速代理
+      - ENABLE_GOPROXY=false  #go 加速代理
+      - ENABLE_GITHUBPROXY=false #github 加速代理
+      - ENABLE_APKPROXY=false #alpin APK 加速代理
+      # - EXTEND_REPO_URL=https://xxxx  #自定义插件地址，开启后，内置github加速失效，请自行添加加速
