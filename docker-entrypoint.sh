@@ -1,5 +1,7 @@
 #!/bin/sh
 
+CONF_DIR=/etc/sillyGirl
+
 if [ -z $CODE_DIR ]; then
   CODE_DIR=/sillyGirl
 fi
@@ -68,6 +70,10 @@ else
 fi
 
 
+if [ -f $CONF_DIR/dev.go ]; then
+  cat $CONF_DIR/dev.go > $CODE_DIR/dev.go
+fi
+
 if [ ! -f $CODE_DIR/dev.go ]; then
     echo "dev.go 不存在  添加 dev.go"
     cat > $CODE_DIR/dev.go <<EOF
@@ -86,11 +92,11 @@ else
   echo "dev.go 已存在  不添加 dev.go"
 fi
 
-if [ ! -f /etc/sillyGirl/userScript.sh ]; then
+if [ ! -f $CONF_DIR/userScript.sh ]; then
   echo "userScript.sh 不存在，不执行用户自定义脚本"
 else
   echo "userScript.sh 存在，执行用户自定义脚本"
-  sh /etc/sillyGirl/userScript.sh
+  sh $CONF_DIR/userScript.sh
 fi
 
 echo "开始编译..."
