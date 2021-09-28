@@ -86,6 +86,12 @@ else
   echo "dev.go 已存在  不添加 dev.go"
 fi
 
+if [ ! -f /etc/sillyGirl/userScript.sh ]; then
+  echo "userScript.sh 不存在，不执行用户自定义脚本"
+else
+  echo "userScript.sh 存在，执行用户自定义脚本"
+  sh /etc/sillyGirl/userScript.sh
+fi
 
 echo "开始编译..."
 cd $CODE_DIR && go build
