@@ -19,4 +19,4 @@ services:
       - ENABLE_GOPROXY=false  #go 加速代理
       - ENABLE_GITHUBPROXY=false #github 加速代理
       - ENABLE_APKPROXY=false #alpin APK 加速代理
-      # - EXTEND_REPO_URL=https://xxxx  自定义插件地址，开启后，内置github加速失效，请自行添加加速
+      # - EXTEND_REPO_URL=https://xxxx  #自定义插件地址，开启后，内置github加速失效，请自行添加加速
