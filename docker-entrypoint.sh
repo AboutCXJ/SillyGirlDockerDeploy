@@ -104,6 +104,9 @@ cd $CODE_DIR && go build
 
 
 echo "启动..."
- ./sillyGirl
+ ./sillyGirl -d
 
+echo -e "=================== 启动完毕，如果第一次配置机器人，请手动以前台模式启动 ==================="
 
+crond -f >/dev/null 2>&1
+exec "$@"
