@@ -76,7 +76,7 @@ fi
 
 if [ ! -f $CODE_DIR/dev.go ]; then
   echo "dev.go 不存在  添加 dev.go"
-  cd $CODE_DIR && wget -O dev.go https://raw.githubusercontent.com/cdle/sillyGirl/main/dev.go.demo
+  cd $CODE_DIR && wget -O dev.go ${GITHUBPROXY}https://raw.githubusercontent.com/cdle/sillyGirl/main/dev.go.demo
 
 else
   echo "dev.go 已存在  不添加 dev.go"
@@ -84,7 +84,7 @@ fi
 
 if [ ! -f $CONF_DIR/sets.conf ]; then
   echo "sets.conf 不存在，添加sets.conf"
-  cd $CONF_DIR && wget -O sets.conf https://raw.githubusercontent.com/LeanFly/SillyGirlDockerDeploy/main/sets.conf
+  cd $CONF_DIR && wget -O sets.conf ${GITHUBPROXY}https://raw.githubusercontent.com/LeanFly/SillyGirlDockerDeploy/main/sets.conf
 else
   echo "sets.conf已存在"
 fi
