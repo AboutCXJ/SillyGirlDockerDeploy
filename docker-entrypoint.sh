@@ -76,7 +76,7 @@ fi
 
 if [ ! -f $CODE_DIR/dev.go ]; then
   echo "dev.go 不存在  添加 dev.go"
-  cd $CODE_DIR && wget -O dev.go ${GITHUBPROXY}https://raw.githubusercontent.com/cdle/sillyGirl/main/dev.go.demo
+  cd $CODE_DIR && wget -O dev.go ${GITHUBPROXY}https://raw.githubusercontent.com/LeanFly/SillyGirlDockerDeploy/main/dev.go
 
 else
   echo "dev.go 已存在  不添加 dev.go"
