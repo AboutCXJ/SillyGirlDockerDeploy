@@ -88,18 +88,18 @@ else
   echo "dev.go 已存在  不添加 dev.go"
 fi
 
-if [ ! -f $CONF_DIR/userScript.sh ]; then
-  echo "userScript.sh 不存在，不执行用户自定义脚本"
-else
-  echo "userScript.sh 存在，执行用户自定义脚本"
-  sh $CONF_DIR/userScript.sh
-fi
-
 if [ ! -f $CONF_DIR/sets.conf ]; then
   echo "sets.conf 不存在，添加sets.conf"
   cd $CONF_DIR &&  wget -O sets.conf ${GITHUBPROXY}https://raw.githubusercontent.com/LeanFly/SillyGirlDockerDeploy/main/sets.conf
 else
   echo "sets.conf已存在"
+fi
+
+if [ ! -f $CONF_DIR/userScript.sh ]; then
+  echo "userScript.sh 不存在，不执行用户自定义脚本"
+else
+  echo "userScript.sh 存在，执行用户自定义脚本"
+  sh $CONF_DIR/userScript.sh
 fi
 
 echo "开始编译..."
