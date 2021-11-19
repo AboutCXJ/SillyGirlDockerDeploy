@@ -69,7 +69,7 @@ else
   cd $CODE_DIR/develop/${EXTEND_REPO_NAME} && git reset --hard && git pull
 fi
 
-if [ ! -d $CODE_DIR/develop/onebyone/.git]; then
+if [ ! -d $CODE_DIR/develop/onebyone/.git ]; then
     echo "扩展 一对一推送不存在，开始clone代码..."
     git clone ${GITHUBPROXY}https://github.com/xumf/onebyone $CODE_DIR/develop/onebyone
 else
