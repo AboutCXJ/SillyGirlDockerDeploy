@@ -99,7 +99,10 @@ else
   echo "下载最新 dev.go"
   cd $CODE_DIR && wget -O dev.go ${GITHUBPROXY}https://raw.githubusercontent.com/LeanFly/SillyGirlDockerDeploy/main/dev.go
 fi
-
+if [ ! -f $CODE_DIR/dev.go ]; then
+  echo "远程获取dev.go失败，从备份恢复"
+  cd $CODE_DIR && cp dev.go.bak dev.go
+fi
 
 if [ ! -f $CONF_DIR/sets.conf ]; then
   echo "sets.conf 不存在，添加sets.conf"
